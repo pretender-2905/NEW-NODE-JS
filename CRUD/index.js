@@ -24,6 +24,7 @@ const users = [
 
 import express from 'express'
 import morgan from 'morgan'
+import userRoutes from './routers/user'
 const app = express()
 app.use(express.json())  //also a middleware (post ki request se jab body mai data bhejty hain to ye osy json mai convert kr deta hai)
 const PORT = 3000
@@ -47,10 +48,15 @@ app.get("/", middleware,  (req,res)=>{
     res.send("HELLO FROM NEW NODE..... I LOVE YOU")
     console.log("Request by --> ", req.requestBy)
 })
-app.post("/", (req,res)=>{
-    console.log("req.body->", req.body)
-    res.send(users)
-})
+
+
+app.use("/user", userRoutes)
+
+
+// app.post("/", (req,res)=>{
+//     console.log("req.body->", req.body)
+//     res.send(users)
+// })
 
 app.listen(PORT, ()=>{
     console.log(`The server is running on http://localhost:${PORT}`)
