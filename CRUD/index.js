@@ -25,6 +25,7 @@ const users = [
 import express from 'express'
 import morgan from 'morgan'
 import userRoutes from './routers/user.js'
+import coursesRoutes from './routers/courses.js'
 const app = express()
 app.use(express.json())  //also a middleware (post ki request se jab body mai data bhejty hain to ye osy json mai convert kr deta hai)
 const PORT = 3000
@@ -44,13 +45,14 @@ function middleware(req, res, next){
 
 // app.use(middleware);
 
-app.get("/", middleware,  (req,res)=>{
+app.get("/",  (req,res)=>{
     res.send("HELLO FROM NEW NODE..... I LOVE YOU")
     console.log("Request by --> ", req.requestBy)
 })
 
 
 app.use("/user", userRoutes)
+app.use("/courses", coursesRoutes)
 
 
 // app.post("/", (req,res)=>{
