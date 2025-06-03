@@ -24,7 +24,7 @@ const users = [
 
 import express from 'express'
 import morgan from 'morgan'
-import userRoutes from './routers/user'
+import userRoutes from './routers/user.js'
 const app = express()
 app.use(express.json())  //also a middleware (post ki request se jab body mai data bhejty hain to ye osy json mai convert kr deta hai)
 const PORT = 3000
